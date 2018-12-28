@@ -51,6 +51,7 @@ class Graph{
 		int w = e.to;
 		adj[v].add(e);
 		adj[w].add(e);
+		E++;
 	}
    
 	/*
@@ -60,7 +61,9 @@ class Graph{
 	   return new ArrayList<Edge>(adj[v]);
    }
 
-   
+   /*
+    * return all of the edges
+    */
    public ArrayList<Edge> edges(){
 	   ArrayList<Edge> list = new ArrayList<Edge>();
 	   for (int v = 0; v < V; v++)
@@ -71,6 +74,10 @@ class Graph{
 		}
 		return list;
 	}
+   
+   public int getEdgesNumber() {
+	   return E;
+   }
 
 	static Graph example(){
 		Graph g = new Graph(4);
