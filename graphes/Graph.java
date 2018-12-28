@@ -28,16 +28,24 @@ class Graph{
 		coordY[v] = 0;
 	}
     
+	/*
+	 * return the number of vertice
+	 */
 	public int vertices(){
         return V;
    	}
    
+	/*
+	 * set the coordinate x and y of a vertice i
+	 */
 	public void setCoordinate(int i, int x, int y){
 		coordX[i] = x;
 		coordY[i] = y;
 	}
     
-    
+    /*
+     * add an edge e to the graph
+     */
 	public void addEdge(Edge e){
 		int v = e.from;
 		int w = e.to;
@@ -45,10 +53,14 @@ class Graph{
 		adj[w].add(e);
 	}
    
+	/*
+	 * return a copy of the list of the edges connected to the vertice v
+	 */
    public ArrayList<Edge> adj(int v){
 	   return new ArrayList<Edge>(adj[v]);
    }
 
+   
    public ArrayList<Edge> edges(){
 	   ArrayList<Edge> list = new ArrayList<Edge>();
 	   for (int v = 0; v < V; v++)

@@ -13,6 +13,9 @@ class Edge
 		this.used = false;
     }
     
+    /*
+     * return the other vertice of the edge
+     */
     final int other(int v)
     {
     		if (this.from == v) {
