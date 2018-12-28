@@ -64,7 +64,7 @@ class Graph{
    public ArrayList<Edge> edges(){
 	   ArrayList<Edge> list = new ArrayList<Edge>();
 	   for (int v = 0; v < V; v++)
-		for (Edge e : adj(v)) {
+		for (Edge e : adj(v) ){
 			if (e.from == v) {
 				list.add(e);
 			}
@@ -155,4 +155,15 @@ class Graph{
 	    {
 	    }                                             
     }    
+	
+	
+	public ArrayList<Edge> getAdj(int v){
+		return this.adj[v];
+	}
+	
+	public void removeList() {
+		for (int i= 0; i < V; i++) {
+			adj[i].clear();
+		}
+	}
 }
