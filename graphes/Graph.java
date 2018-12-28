@@ -53,8 +53,9 @@ class Graph{
 	   ArrayList<Edge> list = new ArrayList<Edge>();
 	   for (int v = 0; v < V; v++)
 		for (Edge e : adj(v)) {
-		if (e.from == v)
-		list.add(e);
+			if (e.from == v) {
+				list.add(e);
+			}
 		}
 		return list;
 	}
@@ -77,17 +78,22 @@ class Graph{
 	static Graph Grid(int n){
 		Graph g = new Graph(n*n);
 		int i,j;
-		for (i = 0 ; i < n; i ++) 
-		    for (j = 0 ; j < n; j ++) 
+		for (i = 0 ; i < n; i ++) {
+		    for (j = 0 ; j < n; j ++) {
 			g.setCoordinate(n*i+j, 50+(300*i)/n,50+(300*j)/n);
-		
-		for (i = 0 ; i < n; i ++) 
-		    for (j = 0 ; j < n; j ++){
-			if (i < n-1) 
-			    g.addEdge(new Edge(n*i+j,n*(i+1)+j));
-			if (j < n-1) 
-			    g.addEdge(new Edge(n*i+j,n*i+j+1));
 		    }
+		}
+		
+		for (i = 0 ; i < n; i ++) {
+		    for (j = 0 ; j < n; j ++){
+				if (i < n-1) {
+				    g.addEdge(new Edge(n*i+j,n*(i+1)+j));
+				}
+				if (j < n-1) {
+				    g.addEdge(new Edge(n*i+j,n*i+j+1));
+				}
+		    }
+		}
 		return g;
 	}
     
@@ -101,28 +107,26 @@ class Graph{
 		BasicStroke bs = new BasicStroke(2);
 		g2d.setStroke(bs);
 		// dessine les arêtes 
-	for (Edge e: edges())
-	    {
-		int i = e.from;
-		int j = e.to;
-		if (e.used)
-		    g2d.setColor(Color.RED);
-		else
-		    g2d.setColor(Color.GRAY);
-		    
-		g2d.drawLine(coordX[i], coordY[i], coordX[j], coordY[j]);
-	    }
-	// dessine les sommets 
-	for (int i = 0; i < V; i++)
-	    {
-		g2d.setColor(Color.WHITE);
-		g2d.fillOval(coordX[i]-15, coordY[i]-15,30,30);
-		g2d.setColor(Color.BLACK);
-		g2d.drawOval(coordX[i]-15, coordY[i]-15,30,30);
-		g2d.drawString(Integer.toString(i), coordX[i], coordY[i]);
-	    }
-	
-	return image;
+		for (Edge e: edges()){
+			int i = e.from;
+			int j = e.to;
+			if (e.used) {
+			    g2d.setColor(Color.RED);
+			}
+			else {
+			    g2d.setColor(Color.GRAY);
+			}
+			g2d.drawLine(coordX[i], coordY[i], coordX[j], coordY[j]);
+		}
+		// dessine les sommets 
+		for (int i = 0; i < V; i++){
+			g2d.setColor(Color.WHITE);
+			g2d.fillOval(coordX[i]-15, coordY[i]-15,30,30);
+			g2d.setColor(Color.BLACK);
+			g2d.drawOval(coordX[i]-15, coordY[i]-15,30,30);
+			g2d.drawString(Integer.toString(i), coordX[i], coordY[i]);
+		}
+		return image;
 	}
 
 
