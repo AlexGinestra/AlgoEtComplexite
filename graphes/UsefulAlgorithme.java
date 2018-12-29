@@ -53,6 +53,7 @@ public class UsefulAlgorithme {
 	
 	/*
 	 * return true if the graph g is a covering tree
+	 * WARNING may have no cycle
 	 */
 	@SuppressWarnings("not working")
 	public static boolean isACoveringTree(Graph g) {
