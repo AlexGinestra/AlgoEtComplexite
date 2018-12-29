@@ -54,6 +54,7 @@ public class UsefulAlgorithme {
 	/*
 	 * return true if the graph g is a covering tree
 	 */
+	@SuppressWarnings("not working")
 	public static boolean isACoveringTree(Graph g) {
 		boolean res = true;
 		boolean[] vertices = new boolean[g.vertices()];
@@ -83,6 +84,7 @@ public class UsefulAlgorithme {
 	 * - origin is the origin of the edges explorations
 	 * - e is the current edge
 	 */
+	@SuppressWarnings("not working")
 	private static void isACoveringTreeAuxilary(boolean[] tab, Graph g, int origin, Edge e) {
 		tab[origin] = true;
 		for(Edge eTemp : g.adj(origin)) {
