@@ -11,7 +11,7 @@ public class UsefulAlgorithme {
 		boolean hasCycle = false;
 		if(!(g.adj(e.from).size() == 0 || g.adj(e.to).size() == 0)) {
 			for(Edge eTemp : g.adj(e.to)) {
-				hasCycle = UsefulAlgorithme.cycleDetectionRecursive(g, eTemp, e.from, 0);
+				hasCycle = UsefulAlgorithme.cycleDetectionRecursive(g, e, e.from, e.to, 0);
 				if(hasCycle) {
 					return true;
 				}
@@ -34,14 +34,19 @@ public class UsefulAlgorithme {
 	 * - false in other case
 	 */
 	@SuppressWarnings("unchecked")
-	private static boolean cycleDetectionRecursive(Graph g, Edge e, int dest, int depthCount) {
+	private static boolean cycleDetectionRecursive(Graph g, Edge e, int dest, int origin, int depthCount) {
 		boolean hasCycle = false;
 		if(e.to == dest || e.from == dest || depthCount > g.getEdgesNumber()) {
 			return true;
 		}
-		for(Edge eTemp : g.adj(e.to)) {
+		for(Edge eTemp : g.adj(origin)) {
 			if(eTemp != e) {
-				hasCycle = UsefulAlgorithme.cycleDetectionRecursive(g, eTemp, dest, depthCount++);
+				if(eTemp.to == origin) {
+					hasCycle = UsefulAlgorithme.cycleDetectionRecursive(g, eTemp, dest, eTemp.from, depthCount++);
+				}
+				else {
+					hasCycle = UsefulAlgorithme.cycleDetectionRecursive(g, eTemp, dest, eTemp.to, depthCount++);
+				}
 				if(hasCycle) {
 					return true;
 				}
@@ -106,13 +111,14 @@ public class UsefulAlgorithme {
 		g.addEdge(new Edge(0, 1));
 		g.addEdge(new Edge(1, 2));
 		g.addEdge(new Edge(3, 2));
-
 		g.addEdge(new Edge(3, 4));
 
 		System.out.println(UsefulAlgorithme.cycleDetection(g, new Edge(3, 4)));
 		System.out.println(UsefulAlgorithme.cycleDetection(g, new Edge(2, 3)));
 		System.out.println(UsefulAlgorithme.cycleDetection(g, new Edge(0, 4)));
 		System.out.println(UsefulAlgorithme.cycleDetection(g, new Edge(2, 0)));
+		System.out.println(UsefulAlgorithme.cycleDetection(g, new Edge(0, 4)));
+
 		
 		System.out.println(UsefulAlgorithme.isACoveringTree(g));
 

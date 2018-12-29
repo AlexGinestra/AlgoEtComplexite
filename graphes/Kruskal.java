@@ -44,7 +44,7 @@ public class Kruskal {
 		g.addEdge(new Edge(0, 4));
 		
 		Graph graph = Kruskal.algorithme(g);
-		graph.writeFile("ici");
+		graph.writeFile("resultat");
 		
 	}
 }
