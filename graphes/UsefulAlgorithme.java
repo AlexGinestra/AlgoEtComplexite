@@ -51,19 +51,68 @@ public class UsefulAlgorithme {
 	}
 	
 	
+	/*
+	 * return true if the graph g is a covering tree
+	 */
+	public static boolean isACoveringTree(Graph g) {
+		boolean res = true;
+		boolean[] vertices = new boolean[g.vertices()];
+		for(int i = 0 ; i < vertices.length ; i++) {
+			vertices[i] = false;
+		}
+		
+		for(Edge e : g.adj(0)) {
+			vertices[0] = true;
+			if(e.to == 0) {
+				UsefulAlgorithme.isACoveringTreeAuxilary(vertices, g, e.from, e);
+			}
+			else {
+				UsefulAlgorithme.isACoveringTreeAuxilary(vertices, g, e.to, e);
+			}
+		}
+		for(int i = 0 ; i < vertices.length && res ; i++) {
+			res = res && vertices[i];
+		}
+		return res;
+	}
+	
+	/*
+	 * param :
+	 * - tab[] is the vertices' boolean tab which is set on true if the vertice is in the way
+	 * - g is the graph
+	 * - origin is the origin of the edges explorations
+	 * - e is the current edge
+	 */
+	private static void isACoveringTreeAuxilary(boolean[] tab, Graph g, int origin, Edge e) {
+		tab[origin] = true;
+		for(Edge eTemp : g.adj(origin)) {
+			if(eTemp != e) {
+				if(eTemp.to == origin) {
+					UsefulAlgorithme.isACoveringTreeAuxilary(tab, g, eTemp.from, eTemp);
+				}
+				else {
+					UsefulAlgorithme.isACoveringTreeAuxilary(tab, g, eTemp.to, eTemp);
+				}
+			}
+		}
+	}
+	
+	
 	public static void main(String... args) {
 		Graph g = new Graph(5);
 		g.addEdge(new Edge(0, 1));
 		g.addEdge(new Edge(1, 2));
+		g.addEdge(new Edge(3, 2));
+
 		g.addEdge(new Edge(3, 4));
 
 		System.out.println(UsefulAlgorithme.cycleDetection(g, new Edge(3, 4)));
 		System.out.println(UsefulAlgorithme.cycleDetection(g, new Edge(2, 3)));
 		System.out.println(UsefulAlgorithme.cycleDetection(g, new Edge(0, 4)));
 		System.out.println(UsefulAlgorithme.cycleDetection(g, new Edge(2, 0)));
-
-
 		
+		System.out.println(UsefulAlgorithme.isACoveringTree(g));
+
 		
 	}
 }

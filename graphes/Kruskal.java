@@ -1,5 +1,8 @@
 package graphes;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Kruskal {
 	
 	
@@ -9,9 +12,12 @@ public class Kruskal {
 	 *  return: covering tree of G
 	 */
 	public static Graph algorithme(Graph g) {
+		Graph gRes = new Graph(g.vertices());
+		ArrayList<Edge> edgesTemp = g.edges();
+		Collections.shuffle(edgesTemp);
 		
-		// TODO
-		return null;
+		
+		return gRes;
 		
 	}
 
