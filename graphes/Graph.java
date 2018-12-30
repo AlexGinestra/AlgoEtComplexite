@@ -164,13 +164,14 @@ class Graph{
     }    
 	
 	
-	public ArrayList<Edge> getAdj(int v){
-		return this.adj[v];
+	public static Graph initialisation(int n) {
+		Graph g = new Graph(n*n);
+		for (int i = 0 ; i < n; i ++) {
+		    for (int j = 0 ; j < n; j ++) {
+		    		g.setCoordinate(n*i+j, 50+(300*i)/n,50+(300*j)/n);
+		    }
+		}
+		return g;
 	}
 	
-	public void removeList() {
-		for (int i= 0; i < V; i++) {
-			adj[i].clear();
-		}
-	}
 }

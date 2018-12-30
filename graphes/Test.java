@@ -118,6 +118,11 @@ public class Test{
 	Display d = new Display();
 	d.setImage(G.toImage());
 	System.out.println("appuyez sur une touche");
+	
+	// Pour test algo AldousBroder
+	// G = AldousBroder.algorithme(G);
+	// d.setImage(G.toImage());
+	
 	new Scanner(System.in).nextLine();
 	d.close();
 	printLaby(G,size, "toto.tex");
