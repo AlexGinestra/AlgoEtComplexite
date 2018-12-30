@@ -12,7 +12,7 @@ public class Kruskal {
 	 *  param: graph G
 	 *  return: covering tree of G
 	 */
-	public static Graph algorithme(Graph g) {
+	public static Graph algorithmeKruskal(Graph g) {
 		Graph gRes = new Graph(g.vertices());
 		ArrayList<Edge> edgesTemp = g.edges();
 		Collections.shuffle(edgesTemp);
@@ -42,7 +42,7 @@ public class Kruskal {
 		g.addEdge(new Edge(3, 0));
 		g.addEdge(new Edge(0, 4));
 		
-		Graph graph = Kruskal.algorithme(g);
+		Graph graph = Kruskal.algorithmeKruskal(g);
 		graph.writeFile("resultat");
 		
 	}
