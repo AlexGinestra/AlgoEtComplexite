@@ -27,7 +27,6 @@ public class Kruskal {
 			else {
 				edgesTemp.remove(0);
 			}
-			
 		}
 		return new Graph(0);		
 	}
