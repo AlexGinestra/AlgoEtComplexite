@@ -1,10 +1,7 @@
 package graphes;
-
-//package graphe;
 import java.io.*;
-
-
 import java.util.*;
+
 public class Test{
 
 
@@ -108,24 +105,53 @@ public class Test{
 	    }                                             
     }    
 	
-
-	    
     }	
     
+    /*
+     * fonction de test sur AldousBroder
+     */
+    private static void testAldousBroder() {
+	    	Graph G = Graph.Grid(4);
+    		G = AldousBroder.algorithme(G);
+	    	Display d = new Display();
+	    	d.setImage(G.toImage());
+	    	System.out.println("appuyez sur une touche");
+	    	new Scanner(System.in).nextLine();
+	    	d.close();
+    }
+    
+    
+    /*
+     * fonction de test sur Kruskal
+     */
+    private static void testKruskal() {
+     	Graph G = Graph.Grid(4);
+		G = AldousBroder.algorithme(G);
+	    	Display d = new Display();
+	    	d.setImage(G.toImage());
+	    	System.out.println("appuyez sur une touche");
+	    	new Scanner(System.in).nextLine();
+	    	d.close();
+    }
+    
+    
+    
     public static void main(String[] args) {
-	int size = 4;
+	/*int size = 4;
 	Graph G = Graph.Grid(size);
 	Display d = new Display();
 	d.setImage(G.toImage());
 	System.out.println("appuyez sur une touche");
 	
-	// Pour test algo AldousBroder
-	// G = AldousBroder.algorithme(G);
-	// d.setImage(G.toImage());
+	
 	
 	new Scanner(System.in).nextLine();
 	d.close();
-	printLaby(G,size, "toto.tex");
+	printLaby(G,size, "toto.tex");*/
+    	
+    	//testAldousBroder();
+    	
+    	//testKruskal();
 	
 	
     }
