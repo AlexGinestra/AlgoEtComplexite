@@ -25,4 +25,24 @@ class Edge
     			return this.from;
     		}
     }    
+    
+    
+    /*
+     * return true if the edge is equals to the current one
+     */
+    public boolean edgeIsEquals(Edge e) {
+    		if(e.to == this.to) {
+    			if(e.from == this.from) {
+    				return true;
+    			}
+    			return false;
+    		}
+    		else if(e.to == this.from){
+    			if(e.from == this.to){
+    				return true;
+    			}
+    			return false;
+    		}
+    		return false;
+    }
 }

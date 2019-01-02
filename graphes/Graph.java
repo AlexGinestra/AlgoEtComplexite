@@ -2,7 +2,6 @@ package graphes;
 
 import java.util.ArrayList;
 import java.io.*;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.*;
 
@@ -174,4 +173,38 @@ class Graph{
 		return g;
 	}
 	
+	/*
+	 * return true if the graph g is equals to the current one
+	 */
+	public boolean graphIsEquals(Graph g) {
+		if(g.vertices() != V || g.getEdgesNumber() != E) {
+			return false;
+		}
+		ArrayList<Edge> edgesTemp;
+		int j, k;
+		boolean isEquals = true;
+		
+		for(int i = 0 ; i < V ; i++) {
+			edgesTemp = g.adj(i);
+			if(edgesTemp.size() != adj[i].size()) {
+				return false;
+			}
+			for(j = 0 ; j < adj[i].size() ; j++) {
+				if(!isEquals) {
+					return false;
+				}
+				k = 0;
+				isEquals = false;
+				while(!isEquals && k < adj[i].size()){
+					if(edgesTemp.get(0).edgeIsEquals(adj[i].get(k))) {
+						isEquals = true;
+					}
+					k++;
+				}
+				edgesTemp.remove(0);
+			}
+			
+		}
+		return isEquals;
+	}
 }

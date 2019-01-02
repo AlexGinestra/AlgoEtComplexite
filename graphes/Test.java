@@ -2,7 +2,9 @@ package graphes;
 import java.io.*;
 import java.util.*;
 
-public class Test{
+import junit.framework.TestCase;
+
+public class Test extends TestCase{
 
 
     public static void printLaby(Graph G, int size, String file){
@@ -135,6 +137,26 @@ public class Test{
     }
     
     
+    /*
+     * fonction de test sur l'egalite de deux graphes
+     */
+    private static void testEgalite() {
+		Graph g2 = new Graph(4);
+    		Graph g = new Graph(4);
+    		assertTrue(g.graphIsEquals(g2));
+
+    		g.addEdge(new Edge(0, 1));
+    		g.addEdge(new Edge(1, 2));
+    		g.addEdge(new Edge(3, 2));
+    		assertFalse(g.graphIsEquals(g2));
+    		
+    		g2.addEdge(new Edge(3, 2));
+    		g2.addEdge(new Edge(0, 1));
+    		g2.addEdge(new Edge(1, 2));
+    		assertTrue(g.graphIsEquals(g2));
+
+    }
+    
     
     public static void main(String[] args) {
 	/*int size = 4;
@@ -153,6 +175,7 @@ public class Test{
     	
     	//testKruskal();
 	
+    	testEgalite();
 	
     }
 } 
