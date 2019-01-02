@@ -17,6 +17,7 @@ public class Kruskal {
 		ArrayList<Edge> edgesTemp = g.edges();
 		Collections.shuffle(edgesTemp);
 		while(edgesTemp.size() > 0) {
+			// test if the graph has a cycle if we had the edge 
 			if(!UsefulAlgorithme.cycleDetection(gRes, edgesTemp.get(0))) {
 				gRes.addEdge(edgesTemp.get(0));
 				edgesTemp.remove(0);
