@@ -2,6 +2,7 @@ package graphes;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class Kruskal {
 	
@@ -12,7 +13,7 @@ public class Kruskal {
 	 *  return: covering tree of G
 	 */
 	public static Graph algorithmeKruskal(Graph g) {
-		Graph gRes = new Graph(g.vertices());
+		Graph gRes = Graph.initialisation((int) Math.sqrt(g.vertices()));
 		ArrayList<Edge> edgesTemp = g.edges();
 		Collections.shuffle(edgesTemp);
 		while(edgesTemp.size() > 0) {
@@ -35,7 +36,9 @@ public class Kruskal {
 	 * test requis pour la question 3
 	 */
 	public static void testQ3() {
-		Graph graphModel = new Graph(4);
+		boolean truc = true;
+		
+		Graph graphModel = Graph.Grid(4);
 		graphModel.addEdge(new Edge(0,1));
 		graphModel.addEdge(new Edge(0,2));
 		graphModel.addEdge(new Edge(0,3));
@@ -47,7 +50,7 @@ public class Kruskal {
 		int[] nbGraphKruskal = new int[8];
 		
 		for(int i = 0 ; i < 8 ; i++) {
-			g[i] = new Graph(4);
+			g[i] = Graph.Grid(4);
 			nbGraphKruskal[i] = 0;
 		}
 		//graph g1
@@ -90,23 +93,60 @@ public class Kruskal {
 		g[7].addEdge(new Edge(0,3));
 		g[7].addEdge(new Edge(1,3));
 
+		// do 1 000 000 times kruskal on the example in the project subject
 		for(int i = 0 ; i < 1000000 ; i++) {
 			gTemp = Kruskal.algorithmeKruskal(graphModel);
-			for(int j = 0 ; j < 8 ; j++) {
-				if(g[j].graphIsEquals(gTemp)){
-					nbGraphKruskal[j]++;
-					break;
+			if(g[0].graphIsEquals(gTemp)){
+				nbGraphKruskal[0]++;
+			}
+			else if(g[1].graphIsEquals(gTemp)){
+				nbGraphKruskal[1]++;
+			}
+			else if(g[2].graphIsEquals(gTemp)){
+				nbGraphKruskal[2]++;
+			}
+			else if(g[3].graphIsEquals(gTemp)){
+				nbGraphKruskal[3]++;
+			}
+			else if(g[4].graphIsEquals(gTemp)){
+				nbGraphKruskal[4]++;
+			}
+			else if(g[5].graphIsEquals(gTemp)){
+				nbGraphKruskal[5]++;
+			}
+			else if(g[6].graphIsEquals(gTemp)){
+				nbGraphKruskal[6]++;
+			}
+			else if(g[7].graphIsEquals(gTemp)){
+				nbGraphKruskal[7]++;
+			}
+			else {
+				if(truc) {
+					truc = false;
+					
 				}
 			}
+			Display d = new Display();
+			d.setImage(gTemp.toImage());
+			System.out.println("appuyez sur une touche");
+	    		new Scanner(System.in).nextLine();
+	    		d.close();
+			
 		}
-
+		
+		int somme = 0;
+		for(int i = 0 ; i < 8 ; i++) {
+			somme += nbGraphKruskal[i];
+		}
+		System.out.println(somme);
 		for(int i = 0 ; i < 8 ; i++) {
 			System.out.println("graphe num " + (i+1) +" : "+nbGraphKruskal[i]);
 		}
 	}
 	
-	
+	/*
 	public static void main(String... args) {
-		//Kruskal.testQ3();
+		Kruskal.testQ3();
 	}
+	*/
 }

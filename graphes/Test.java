@@ -127,13 +127,11 @@ public class Test extends TestCase{
      * fonction de test sur Kruskal
      */
     private static void testKruskal() {
-     	Graph G = Graph.Grid(4);
-		G = AldousBroder.algorithme(G);
+     	Graph G = Graph.Grid(2);
+		G = Kruskal.algorithmeKruskal(G);
 	    	Display d = new Display();
 	    	d.setImage(G.toImage());
-	    	System.out.println("appuyez sur une touche");
-	    	new Scanner(System.in).nextLine();
-	    	d.close();
+	   
     }
     
     
@@ -173,9 +171,9 @@ public class Test extends TestCase{
     	
     	//testAldousBroder();
     	
-    	//testKruskal();
+    	testKruskal();
 	
-    	testEgalite();
+    	//testEgalite();
 	
     }
 } 
