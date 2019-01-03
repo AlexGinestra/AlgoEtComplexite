@@ -127,10 +127,13 @@ public class Test extends TestCase{
      * fonction de test sur Kruskal
      */
     private static void testKruskal() {
+    		Display d = new Display();
      	Graph G = Graph.Grid(2);
+     	d.setImage(G.toImage());
+
 		G = Kruskal.algorithmeKruskal(G);
-	    	Display d = new Display();
-	    	d.setImage(G.toImage());
+	    	
+	    d.setImage(G.toImage());
 	   
     }
     
@@ -173,7 +176,7 @@ public class Test extends TestCase{
     	
     	testKruskal();
 	
-    	//testEgalite();
+    //testEgalite();
 	
     }
 } 

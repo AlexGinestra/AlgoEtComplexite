@@ -1,6 +1,5 @@
 package graphes;
 
-import java.util.HashSet;
 
 public class UsefulAlgorithme {
 
@@ -8,14 +7,13 @@ public class UsefulAlgorithme {
 	 * return true if adding the edge e to the graph g create a cycle
 	 * else false
 	 */
-	@SuppressWarnings("unchecked")
 	public static boolean cycleDetection(Graph g, Edge e) {
 		UnionFind unionFind = new UnionFind(g.vertices());
 		for(Edge eTemp : g.edges()) {
 			unionFind.unifie(eTemp.from, eTemp.to);
 		}
 		
-		return unionFind.unifie(e.from, e.to);
+		return !unionFind.unifie(e.from, e.to);
 	}
 	
 	

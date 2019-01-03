@@ -10,7 +10,8 @@ public class Kruskal {
 	/*
 	 * Q2 : implantation de l'algorithme de Kruskal
 	 *  param: graph G
-	 *  return: covering tree of G
+	 *  return: covering tree of G if it exist
+	 *  			or a graph without cycle else
 	 */
 	public static Graph algorithmeKruskal(Graph g) {
 		Graph gRes = Graph.initialisation((int) Math.sqrt(g.vertices()));
@@ -29,27 +30,28 @@ public class Kruskal {
 				edgesTemp.remove(0);
 			}
 		}
-		return new Graph(0);		
+		return gRes;		
 	}
+	
+	
+	
+	
 
 	/*
 	 * test requis pour la question 3
 	 */
 	public static void testQ3() {
 		
-		Graph graphModel = Graph.Grid(4);
-		graphModel.addEdge(new Edge(0,1));
-		graphModel.addEdge(new Edge(0,2));
+		Graph graphModel = Graph.Grid(2);
 		graphModel.addEdge(new Edge(0,3));
-		graphModel.addEdge(new Edge(1,3));
-		graphModel.addEdge(new Edge(2,3));
+		
 		
 		Graph gTemp;
 		Graph[] g = new Graph[8];
 		int[] nbGraphKruskal = new int[8];
 		
 		for(int i = 0 ; i < 8 ; i++) {
-			g[i] = Graph.Grid(4);
+			g[i] = new Graph(4);
 			nbGraphKruskal[i] = 0;
 		}
 		//graph g1
@@ -128,7 +130,7 @@ public class Kruskal {
 		for(int i = 0 ; i < 8 ; i++) {
 			somme += nbGraphKruskal[i];
 		}
-		System.out.println(somme);
+		System.out.println("Nombre total de graphes classes: "+somme);
 		for(int i = 0 ; i < 8 ; i++) {
 			System.out.println("graphe num " + (i+1) +" : "+nbGraphKruskal[i]);
 		}

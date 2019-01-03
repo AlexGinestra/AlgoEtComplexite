@@ -18,7 +18,7 @@ public class UnionFind {
 	}
 	
 	/*
-	 * return false if there is no x or y in the Union
+	 * return false if there is no x or y in the Union, or if both of them are in the same set
 	 * else
 	 * put all the elements of the y's set , in the x's set
 	 * and return true
