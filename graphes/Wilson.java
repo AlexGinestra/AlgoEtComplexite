@@ -106,29 +106,12 @@ public class Wilson {
 			if(i % 100000 == 0)
 				System.out.println(i);
 			gTemp = Wilson.algorithmeWilson(graphModel);
-			if(g[0].graphIsEquals(gTemp)){
-				nbGraphWilson[0]++;
-			}
-			else if(g[1].graphIsEquals(gTemp)){
-				nbGraphWilson[1]++;
-			}
-			else if(g[2].graphIsEquals(gTemp)){
-				nbGraphWilson[2]++;
-			}
-			else if(g[3].graphIsEquals(gTemp)){
-				nbGraphWilson[3]++;
-			}
-			else if(g[4].graphIsEquals(gTemp)){
-				nbGraphWilson[4]++;
-			}
-			else if(g[5].graphIsEquals(gTemp)){
-				nbGraphWilson[5]++;
-			}
-			else if(g[6].graphIsEquals(gTemp)){
-				nbGraphWilson[6]++;
-			}
-			else if(g[7].graphIsEquals(gTemp)){
-				nbGraphWilson[7]++;
+			
+			for(int j = 0 ; j < 8 ; j++) {
+				if(g[j].graphIsEquals(gTemp)){
+					nbGraphWilson[j]++;
+					break;
+				}
 			}
 		}
 		

@@ -100,29 +100,11 @@ public class Kruskal {
 			if(i % 100000 == 0)
 				System.out.println(i);
 			gTemp = Kruskal.algorithmeKruskal(graphModel);
-			if(g[0].graphIsEquals(gTemp)){
-				nbGraphKruskal[0]++;
-			}
-			else if(g[1].graphIsEquals(gTemp)){
-				nbGraphKruskal[1]++;
-			}
-			else if(g[2].graphIsEquals(gTemp)){
-				nbGraphKruskal[2]++;
-			}
-			else if(g[3].graphIsEquals(gTemp)){
-				nbGraphKruskal[3]++;
-			}
-			else if(g[4].graphIsEquals(gTemp)){
-				nbGraphKruskal[4]++;
-			}
-			else if(g[5].graphIsEquals(gTemp)){
-				nbGraphKruskal[5]++;
-			}
-			else if(g[6].graphIsEquals(gTemp)){
-				nbGraphKruskal[6]++;
-			}
-			else if(g[7].graphIsEquals(gTemp)){
-				nbGraphKruskal[7]++;
+			for(int j = 0 ; j < 8 ; j++) {
+				if(g[j].graphIsEquals(gTemp)){
+					nbGraphKruskal[j]++;
+					break;
+				}
 			}
 		}
 		
