@@ -36,7 +36,6 @@ public class Kruskal {
 	 * test requis pour la question 3
 	 */
 	public static void testQ3() {
-		boolean truc = true;
 		
 		Graph graphModel = Graph.Grid(4);
 		graphModel.addEdge(new Edge(0,1));
@@ -95,6 +94,9 @@ public class Kruskal {
 
 		// do 1 000 000 times kruskal on the example in the project subject
 		for(int i = 0 ; i < 1000000 ; i++) {
+			
+			if(i % 100000 == 0)
+				System.out.println(i);
 			gTemp = Kruskal.algorithmeKruskal(graphModel);
 			if(g[0].graphIsEquals(gTemp)){
 				nbGraphKruskal[0]++;
@@ -120,18 +122,6 @@ public class Kruskal {
 			else if(g[7].graphIsEquals(gTemp)){
 				nbGraphKruskal[7]++;
 			}
-			else {
-				if(truc) {
-					truc = false;
-					
-				}
-			}
-			Display d = new Display();
-			d.setImage(gTemp.toImage());
-			System.out.println("appuyez sur une touche");
-	    		new Scanner(System.in).nextLine();
-	    		d.close();
-			
 		}
 		
 		int somme = 0;
@@ -144,9 +134,9 @@ public class Kruskal {
 		}
 	}
 	
-	/*
+	
 	public static void main(String... args) {
 		Kruskal.testQ3();
 	}
-	*/
+	
 }
