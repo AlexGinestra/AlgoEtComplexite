@@ -8,20 +8,35 @@ public class Wilson {
 	public static Graph algorithmeWilson(Graph g) {
 		Graph gRes = Graph.initialisation((int) Math.sqrt(g.vertices()));
 		UnionFind unionFind = new UnionFind(g.vertices());
+		
 		Edge randomEdge;
 		int vertice = 0;
 		while(!UsefulAlgorithme.isACoveringTree(gRes)) {
 			while(unionFind.isInSameSet(0, vertice)) {
 				vertice = (int) (Math.random()*g.vertices());
 			}
+			ArrayList<Integer> verticesList = new ArrayList<Integer>();
 			randomEdge = g.adj(vertice).get((int)(Math.random()*g.adj(vertice).size()));
+			
 			while(!unionFind.isInSameSet(0, vertice)) {
-				if(unionFind.unifie(randomEdge.from, randomEdge.to)) {
-					gRes.addEdge(randomEdge);
-				}
+				verticesList.add(vertice);
 				vertice = randomEdge.other(vertice);
 				randomEdge = g.adj(vertice).get((int)(Math.random()*g.adj(vertice).size()));
 			}
+			verticesList.add(vertice);
+			
+			for(int i = 0 ; i < verticesList.size() ; i++) {
+				int lastIndex = verticesList.lastIndexOf(verticesList.get(i));
+				if(lastIndex != -1) {
+					verticesList.removeAll(verticesList.subList(i, lastIndex));
+				}
+			}
+			
+			for(int i = 1 ; i < verticesList.size() ; i++) {
+				gRes.addEdge(new Edge(verticesList.get(i-1), verticesList.get(i)));
+				unionFind.unifie(0, verticesList.get(i-1));
+			}
+			
 		}
 		return gRes;
 	}
@@ -130,6 +145,19 @@ public class Wilson {
 	
 	public static void main(String... args) {
 		Wilson.testQ6();
+		
+		/*ArrayList<Integer> ar = new ArrayList<Integer>();
+		ar.add(0);
+		ar.add(1);
+		ar.add(2);
+		ar.add(3);
+		ar.add(4);
+		System.out.println(ar.lastIndexOf(3));
+		System.out.println(ar.get(1));
+		System.out.println(ar.subList(1, 3).toString());
+		ar.removeAll(ar.subList(1, 3));
+		System.out.println(ar.toString());
+*/
 	}
 	
 	
