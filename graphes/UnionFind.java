@@ -45,6 +45,21 @@ public class UnionFind {
 		return false;
 	}
 	
+	
+	/*
+	 * return true, if the two number x and y are in the same set
+	 */
+	public boolean isInSameSet(int x, int y) {
+		for(Set<Integer> set : setCollection) {
+			if(set.contains(x) && set.contains(y)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	
 	/*
 	 * return the number of set in the union-find
 	 */

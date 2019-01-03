@@ -134,8 +134,24 @@ public class Test extends TestCase{
 		G = Kruskal.algorithmeKruskal(G);
 	    	
 	    d.setImage(G.toImage());
-	   
     }
+    
+    
+    /*
+     * fonction de test sur Wilson
+     */
+    private static void testWilson() {
+    		Display d = new Display();
+     	Graph G = Graph.Grid(2);
+     	//d.setImage(G.toImage());
+
+
+		G = Wilson.algorithmeWilson(G);
+	    	
+	    d.setImage(G.toImage());
+    }
+    
+    
     
     
     /*
@@ -174,7 +190,9 @@ public class Test extends TestCase{
     	
     	//testAldousBroder();
     	
-    	testKruskal();
+    	//testKruskal();
+    	
+    	testWilson();
 	
     //testEgalite();
 	
