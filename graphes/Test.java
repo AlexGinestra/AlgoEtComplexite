@@ -196,7 +196,7 @@ public class Test extends TestCase{
 	
     //testEgalite();
     	
-    	LabyrintheAlex.testQ7();
+    	Labyrinthe.testQ7();
 	
     }
 } 
