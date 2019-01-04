@@ -192,9 +192,11 @@ public class Test extends TestCase{
     	
     	//testKruskal();
     	
-    	testWilson();
+    //	testWilson();
 	
     //testEgalite();
+    	
+    	LabyrintheAlex.testQ7();
 	
     }
 } 

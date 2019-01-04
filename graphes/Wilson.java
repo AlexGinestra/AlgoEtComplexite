@@ -140,7 +140,7 @@ public class Wilson {
 		System.out.println(ar.subList(1, 3).toString());
 		ar.removeAll(ar.subList(1, 3));
 		System.out.println(ar.toString());
-*/
+		 */
 	}
 	
 	
