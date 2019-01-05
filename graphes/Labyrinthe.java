@@ -69,11 +69,40 @@ public class Labyrinthe {
 	
 	public static void testQ7() {
 		Graph g = Graph.Grid(20);
+		
 		/* kruskal */
     		Test.printLaby(Labyrinthe.getLabyrinthe(Kruskal.algorithmeKruskal(g)), 20, "Q7Kruskal.tex");
 		
 		/* Wilson ou Aldous-Broder */
     		Test.printLaby(Labyrinthe.getLabyrinthe(Wilson.algorithmeWilson(g)), 20, "Q7Wilson.tex");
+	}
+	
+	
+	public static void testQ8() {
+		int size = 20;
+		int[] deadEnd = new int[2]; // 0: Kruskal		1: Wilson
+		int[] stepToEnd = new int[2];
+		for(int i = 0 ; i < 2 ; i++) {
+			stepToEnd[i] = 0;
+			deadEnd[i] = 0;
+		}
+		
+ 		Graph g = Graph.Grid(size);
+ 		
+ 		for(int i = 0 ; i < 1000 ; i++) {
+ 			Graph kru = Kruskal.algorithmeKruskal(g);
+ 			Graph wil = Wilson.algorithmeWilson(g);
+ 			
+ 			stepToEnd[0] += Labyrinthe.stepNumber(kru, null, 0, 0, 380);
+ 			deadEnd[0] += Labyrinthe.deadEndNumber(kru, null, 0);
+ 			stepToEnd[1] += Labyrinthe.stepNumber(wil, null, 0, 0, 380);
+ 			deadEnd[1] += Labyrinthe.deadEndNumber(wil, null, 0);
+ 		}
+ 		
+ 		System.out.println("kruskal:   step = " +(stepToEnd[0]/1000) + "    dead-end = " + (deadEnd[0]/1000));
+ 		System.out.println("Wilson:   step = " +(stepToEnd[1]/1000) + "    dead-end = " + (deadEnd[1]/1000));
+
+		
 	}
 	
 }

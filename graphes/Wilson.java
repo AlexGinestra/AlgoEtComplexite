@@ -28,7 +28,6 @@ public class Wilson {
 			}
 			verticesList.add(vertice);
 			
-			System.out.println("\n"+verticesList.toString());
 			/* delete the duplicates vertice */
 			for(int i = 0 ; i < verticesList.size() ; i++) {
 				int lastIndex = verticesList.lastIndexOf(verticesList.get(i));
@@ -38,7 +37,8 @@ public class Wilson {
 					}
 				}
 			}
-			System.out.println(verticesList.toString());
+			
+			/* add to the graph result the edges */
 			for(int i = 1 ; i < verticesList.size() ; i++) {
 				gRes.addEdge(new Edge(verticesList.get(i-1), verticesList.get(i)));
 				unionFind.unifie(0, verticesList.get(i-1));

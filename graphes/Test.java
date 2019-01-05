@@ -196,14 +196,13 @@ public class Test extends TestCase{
 		
 	    //testEgalite();
 	    	
-	    	//Labyrinthe.testQ7();
+	   // 	Labyrinthe.testQ7();
 	    	
-	    	Graph g = Graph.Grid(4);
-			/* Wilson */
+	   /* 	Graph g = Graph.Grid(4);
 	    	Graph wil = Wilson.algorithmeWilson(g);
 	    	
 	    	Display d = new Display();
-		d.setImage(wil.toImage());
+		d.setImage(wil.toImage());*/
 		
 	    	/*
 	    	Graph lab = Labyrinthe.getLabyrinthe(kru);
@@ -211,6 +210,9 @@ public class Test extends TestCase{
 		System.out.println(Labyrinthe.deadEndNumber(kru, null, 0));
 		System.out.println(Labyrinthe.stepNumber(kru, null, 0, 0, 15));
 */
+    	
+    		Labyrinthe.testQ8();
+
 		
     }
 } 
