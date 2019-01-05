@@ -176,27 +176,41 @@ public class Test extends TestCase{
     
     
     public static void main(String[] args) {
-	/*int size = 4;
-	Graph G = Graph.Grid(size);
-	Display d = new Display();
-	d.setImage(G.toImage());
-	System.out.println("appuyez sur une touche");
-	
-	
-	
-	new Scanner(System.in).nextLine();
-	d.close();
-	printLaby(G,size, "toto.tex");*/
-    	
-    	//testAldousBroder();
-    	
-    	//testKruskal();
-    	
-    //	testWilson();
-	
-    //testEgalite();
-    	
-    	Labyrinthe.testQ7();
-	
+		/*int size = 4;
+		Graph G = Graph.Grid(size);
+		Display d = new Display();
+		d.setImage(G.toImage());
+		System.out.println("appuyez sur une touche");
+		
+		
+		
+		new Scanner(System.in).nextLine();
+		d.close();
+		printLaby(G,size, "toto.tex");*/
+	    	
+	    	//testAldousBroder();
+	    	
+	    	//testKruskal();
+	    	
+	    //	testWilson();
+		
+	    //testEgalite();
+	    	
+	    	//Labyrinthe.testQ7();
+	    	
+	    	Graph g = Graph.Grid(4);
+			/* Wilson */
+	    	Graph kru = Kruskal.algorithmeKruskal(g);
+	    	
+	    	Display d = new Display();
+		d.setImage(kru.toImage());
+		
+	    	
+	    	Graph lab = Labyrinthe.getLabyrinthe(kru);
+		Test.printLaby(lab , 4, "Q7kru.tex");
+		System.out.println(Labyrinthe.deadEndNumber(kru, null, 0));
+		System.out.println(Labyrinthe.stepNumber(kru, null, 0, 0, 15));
+
+		
     }
 } 
