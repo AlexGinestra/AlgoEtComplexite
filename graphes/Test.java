@@ -200,17 +200,17 @@ public class Test extends TestCase{
 	    	
 	    	Graph g = Graph.Grid(4);
 			/* Wilson */
-	    	Graph kru = Kruskal.algorithmeKruskal(g);
+	    	Graph wil = Wilson.algorithmeWilson(g);
 	    	
 	    	Display d = new Display();
-		d.setImage(kru.toImage());
+		d.setImage(wil.toImage());
 		
-	    	
+	    	/*
 	    	Graph lab = Labyrinthe.getLabyrinthe(kru);
 		Test.printLaby(lab , 4, "Q7kru.tex");
 		System.out.println(Labyrinthe.deadEndNumber(kru, null, 0));
 		System.out.println(Labyrinthe.stepNumber(kru, null, 0, 0, 15));
-
+*/
 		
     }
 } 

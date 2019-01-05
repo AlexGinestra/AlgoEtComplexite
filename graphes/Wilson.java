@@ -12,12 +12,15 @@ public class Wilson {
 		Edge randomEdge;
 		int vertice = 0;
 		while(!UsefulAlgorithme.isACoveringTree(gRes)) {
+			
+			/* test if the vertice is already discovered */
 			while(unionFind.isInSameSet(0, vertice)) {
 				vertice = (int) (Math.random()*g.vertices());
 			}
 			ArrayList<Integer> verticesList = new ArrayList<Integer>();
 			randomEdge = g.adj(vertice).get((int)(Math.random()*g.adj(vertice).size()));
 			
+			/* walk randomly until it joins a discovered vertice */
 			while(!unionFind.isInSameSet(0, vertice)) {
 				verticesList.add(vertice);
 				vertice = randomEdge.other(vertice);
@@ -25,13 +28,17 @@ public class Wilson {
 			}
 			verticesList.add(vertice);
 			
+			System.out.println("\n"+verticesList.toString());
+			/* delete the duplicates vertice */
 			for(int i = 0 ; i < verticesList.size() ; i++) {
 				int lastIndex = verticesList.lastIndexOf(verticesList.get(i));
-				if(lastIndex != -1) {
-					verticesList.removeAll(verticesList.subList(i, lastIndex));
+				if(lastIndex != -1 && lastIndex != i) {
+					for(int j = i ; j < lastIndex ; j++) {
+						verticesList.remove(i);
+					}
 				}
 			}
-			
+			System.out.println(verticesList.toString());
 			for(int i = 1 ; i < verticesList.size() ; i++) {
 				gRes.addEdge(new Edge(verticesList.get(i-1), verticesList.get(i)));
 				unionFind.unifie(0, verticesList.get(i-1));
