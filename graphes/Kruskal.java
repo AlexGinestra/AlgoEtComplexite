@@ -17,12 +17,15 @@ public class Kruskal {
 		Graph gRes = Graph.initialisation((int) Math.sqrt(g.vertices()));
 		ArrayList<Edge> edgesTemp = g.edges();
 		Collections.shuffle(edgesTemp);
+		UnionFind unionFind = new UnionFind(g.vertices());
+		
 		while(edgesTemp.size() > 0) {
 			// test if the graph has a cycle if we had the edge 
-			if(!UsefulAlgorithme.cycleDetection(gRes, edgesTemp.get(0))) {
+			if(!unionFind.isInSameSet(edgesTemp.get(0).from, edgesTemp.get(0).to)) {
+				unionFind.unifie(edgesTemp.get(0).from, edgesTemp.get(0).to);
 				gRes.addEdge(edgesTemp.get(0));
 				edgesTemp.remove(0);
-				if(UsefulAlgorithme.isACoveringTree(gRes)) {
+				if(unionFind.getNumberOfSets() == 1) {
 					return gRes;
 				}
 			}

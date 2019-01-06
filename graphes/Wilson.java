@@ -11,7 +11,7 @@ public class Wilson {
 		
 		Edge randomEdge;
 		int vertice = 0;
-		while(!UsefulAlgorithme.isACoveringTree(gRes)) {
+		while(unionFind.getNumberOfSets() != 1) {
 			
 			/* test if the vertice is already discovered */
 			while(unionFind.isInSameSet(0, vertice)) {
@@ -107,7 +107,7 @@ public class Wilson {
 		g[7].addEdge(new Edge(0,3));
 		g[7].addEdge(new Edge(1,3));
 
-		// do 1 000 000 times kruskal on the example in the project subject
+		// do 1 000 000 times wilson on the example in the project subject
 		for(int i = 0 ; i < 1000000 ; i++) {
 			
 			if(i % 100000 == 0)
