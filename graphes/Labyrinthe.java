@@ -94,12 +94,12 @@ public class Labyrinthe {
  				System.out.println(i);
  			}
  			Graph kru = Kruskal.algorithmeKruskal(g);
- 			//Graph wil = Wilson.algorithmeWilson(g);
+ 			Graph wil = Wilson.algorithmeWilson(g);
  			
  			stepToEnd[0] += Labyrinthe.stepNumber(kru, null, 0, 0, 380);
  			deadEnd[0] += Labyrinthe.deadEndNumber(kru, null, 0);
- 			//stepToEnd[1] += Labyrinthe.stepNumber(wil, null, 0, 0, 380);
- 			//deadEnd[1] += Labyrinthe.deadEndNumber(wil, null, 0);
+ 			stepToEnd[1] += Labyrinthe.stepNumber(wil, null, 0, 0, 380);
+ 			deadEnd[1] += Labyrinthe.deadEndNumber(wil, null, 0);
  		}
  		
  		System.out.println("kruskal:   step = " +(stepToEnd[0]/1000) + "    dead-end = " + (deadEnd[0]/1000));
