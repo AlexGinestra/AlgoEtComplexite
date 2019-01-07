@@ -10,13 +10,13 @@ public class AlgoCouleur {
 				return 1;
 			}
 			if(b > 0 && m > 0) {
-				res += 1*combinaison(k-1, n-1, b-1, m) + (n-1)*combinaison(k-1,n-1,b,m-1);
+				res += 1*combinaison(k-1, n-1, b-1, m) + n*combinaison(k-1,n-1,b,m-1);
 			}
 			else if(b > 0) {
 				res += 1*combinaison(k-1, n-1, b-1, m);
 			}
 			else if(m > 0) {
-				res += n*combinaison(k-1,n-1,b,m-1);
+				res += (n-1)*combinaison(k-1,n-1,b,m-1);
 			}
 			
 		}
